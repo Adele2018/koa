@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>D3.js</title>
+    <style>
+        p {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            padding-left: 400px
+        }
+    </style>
+</head>
+
+<body>
+123123
+</body>
+<script src="./d3/d3.min.js"></script>
+<script>
+// window.onload = function (params) {
+        
+    let body = d3.select("body")
+    body.selectAll("p")
+        .data([4, 8, 15,2])
+        .enter().append("p")
+        .attr('id', function (d) {
+            return 'p' + d
+        })
+        .text(function (d) { return "I’m number " + d + "!"; });
+
+    body.select("p").style("color", "red");
+    body.insert("p", "#moon").text("Star");
+    body.select('#p8').remove()
+
+    var width = 300;  //画布的宽度
+    var height = 300;   //画布的高度
+    var dataset = [250, 210, 170, 130, 90];
+    var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
+    var svg = d3.select("body")     //选择文档中的body元素
+        .append("svg")          //添加一个svg元素
+        .attr("width", width)       //设定宽度
+        .attr("height", height);    //设定高度
+    svg.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append("rect")
+        .attr("x", 20)
+        .attr("y", function (d, i) {
+            return i * rectHeight;
+        })
+        .attr("width", function (d) {
+            return d;
+        })
+        .attr("height", rectHeight - 2)
+        .attr("fill", "steelblue");
+// }
+
+
+// </script>
+
+</html>    
